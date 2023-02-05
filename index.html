@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no width=device-width" />
+<meta name="description" content="Subway Map" />
+<title>
+Subway Map
+</title>
+</head>
+<style>
+@font-face {
+    font-family: './fonts/NanumSquare';
+    src: url(NanumSquareR.woff);
+}
+body {
+    background-color: white;
+    font-family: 'NanumSquare';
+    margin: 0px;
+    font-size: 40px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+polyline {
+    stroke-width: 12;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+circle {
+    fill: #FFFFFF;
+    stroke : #000000;
+    stroke-width: 2;
+}
+text {
+    font-size: 30px;
+    text-anchor: start;
+}
+text.line2 {
+    font-size: 30px;
+    text-anchor: end;
+}
+div.data_table {
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+}
+</style>
+<body>
+<div>
+<div class="subway_map" id="subway_map">
+<!-- Subway Map will be created via JS -->
+</div>
+</div>
+<script>
+
+var line1 = ['계양', '귤현', '박촌', '임학', '계산', '경인교대입구', '작전', '갈산', '부평구청', '부평시장', '부평', '동수', '부평삼거리', '간석오거리', '인천시청', '예술회관', '인천터미널', '문학경기장', '선학', '신연수', '원인재', '동춘', '동막', '캠퍼스타운', '테크노파크', '지식정보단지', '인천대입구', '센트럴파크', '국제업무지구', '송도달빛축제공원'];
+var line2 = ['검단오류', '왕길', '검단사거리', '마전', '완정', '독정', '검암', '검바위', '아시아드경기장', '서구청', '가정', '가정중앙시장', '석남', '서부여성회관', '인천가좌', '가재울', '주안국가산단', '주안', '시민공원', '석바위시장', '인천시청', '석천사거리', '모래내시장', '만수', '남동구청', '인천대공원', '운연'];
+
+var src = '<svg viewBox="0 0 800 3100">';
+src += '<polyline points="100,100 100,3000" fill="none" stroke="#759CCE" />';
+src += '<polyline points="700,100 700,2700" fill="none" stroke="#F5A251" />';
+line1.forEach((e, i) => {
+    src += '<circle cx="100" cy="' + (i + 1) * 100 + '" r="12" />';
+    src += '<text x=140 y=' + (i + 1) * 100 + '>' + e + '</text>';
+});
+line2.forEach((e, i) => {
+    src += '<circle cx="700" cy="' + (i + 1) * 100 + '" r="12" />';
+    src += '<text class=line2 x=660 y=' + (i + 1) * 100 + '>' + e + '</text>';
+});
+
+
+document.getElementById("subway_map").innerHTML = src;
+
+</script>
+</body>
+</html>
