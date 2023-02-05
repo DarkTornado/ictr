@@ -39,10 +39,27 @@ div.data_table {
     height: auto;
     overflow-y: scroll;
 }
+
+div.header {
+	color: white;
+	font-size: 25px;
+	background-color: black;
+	padding: 16px;
+	box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+	position: fixed;
+	width: 100%;
+}
+
+div.body {
+	padding: 40px 0px 0px 0px;
+}
 </style>
 <body>
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-<div>
+<div class=header>
+인천도시철도 전동열차 운행정보
+</div>
+<div class=body>
 <div class="subway_map" id="subway_map">
 <!-- Subway Map will be created via JS -->
 </div>
