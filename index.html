@@ -6,100 +6,12 @@
 <title>
 인천도시철도 전동열차 운행정보
 </title>
-</head>
-<style>
-body {
-    background-color: white;
-    font-family:  'NanumSquare';
-    margin: 0px;
-    font-size: 40px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-}
-polyline {
-    stroke-width: 12;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-}
-circle {
-    fill: #FFFFFF;
-    stroke : #000000;
-    stroke-width: 2;
-}
-text {
-    font-size: 30px;
-}
-text.left {
-    text-anchor: end;
-}
-text.right {
-    text-anchor: start;
-}
-div.data_table {
-    width: 100%;
-    height: auto;
-    overflow-y:  scroll;
-}
-
-div.header {
-    color: white;
-    font-size: 23px;
-    background-color: black;
-    padding: 16px;
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-}
-div.header > a > i {
-    position: relative;
-    top: 5px;
-}
-
-div.drawer{
-    margin: 0px;
-    background-color: black;
-    color: white;
-    max-height: 0px;
-    height: auto;
-    width: 100%;
-    position: fixed;
-    transition: 0.5s;
-    overflow: hidden;
-    box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.4);
-    z-index: 2;
-}
-div.drawer_inner {
-    padding: 80px 8px 8px 8px;
-    margin: 0px;
-    font-size: 20px;
-}
-div.drawer_inner > a {
-    padding: 8px;
-    display:  block;
-    color: white;
-    text-decoration : none;
-}
-
-div.body {
-    padding: 50px 0px 0px 0px;
-}
-div.body_inner {
-    max-width: 540px;
-    margin: auto;
-}
-hr{
-    margin: 0px auto;
-}
-div.copyright{
-    font-size: 13px;
-    text-align: center;
-    padding: 16px;
-}
-</style>
-<body>
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="./css/subway_map.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
 <div class=header>
 <a id="menu" onclick="openMenu();">
 <i class="material-icons">&#xE5D2;</i>
