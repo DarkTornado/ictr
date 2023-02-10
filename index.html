@@ -34,6 +34,7 @@
 <hr width=98%>
 <div class=copyright>© 2023 Dark Tornado, All rights reserved.</div>
 </div>
+<script src='./js/map_info.js'></script>
 <script>
 var isOpened = false;
 function openMenu(){
@@ -57,77 +58,11 @@ document.getElementById("subway_map").innerHTML = src + '</svg>';
 }
 
 function createMap(train1, train2) {
-var line1 = [
-{x: 100, y: 600, stn: '계양', align: 'right'},
-{x: 100, y: 700, stn: '귤현', align: 'right'},
-{x: 100, y: 800, stn: '박촌', align: 'right'},
-{x: 100, y: 900, stn: '임학', align: 'right'},
-{x: 100, y: 1000, stn: '계산', align: 'right'},
-{x: 100, y: 1100, stn: '경인교대입구', align: 'right'},
-{x: 100, y: 1200, stn: '작전', align: 'right'},
-{x: 100, y: 1300, stn: '갈산', align: 'right'},
-{x: 100, y: 1400, stn: '부평구청', align: 'right'},
-{x: 100, y: 1500, stn: '부평시장', align: 'right'},
-{x: 100, y: 1600, stn: '부평', align: 'right'},
-{x: 100, y: 1700, stn: '동수', align: 'right'},
-{x: 100, y: 1800, stn: '부평삼거리', align: 'right'},
-{x: 100, y: 1900, stn: '간석오거리', align: 'right'},
-
-{x: 400, y: 2100, stn: '인천시청', align: 'right'},
-
-{x: 700, y: 2300, stn: '예술회관', align: 'left'},
-{x: 700, y: 2400, stn: '인천터미널', align: 'left'},
-{x: 700, y: 2500, stn: '문학경기장', align: 'left'},
-{x: 700, y: 2600, stn: '선학', align: 'left'},
-{x: 700, y: 2700, stn: '신연수', align: 'left'},
-{x: 700, y: 2800, stn: '원인재', align: 'left'},
-{x: 700, y: 2900, stn: '동춘', align: 'left'},
-{x: 700, y: 3000, stn: '동막', align: 'left'},
-{x: 700, y: 3100, stn: '캠퍼스타운', align: 'left'},
-{x: 700, y: 3200, stn: '테크노파크', align: 'left'},
-{x: 700, y: 3300, stn: '지식정보단지', align: 'left'},
-{x: 700, y: 3400, stn: '인천대입구', align: 'left'},
-{x: 700, y: 3500, stn: '센트럴파크', align: 'left'},
-{x: 700, y: 3600, stn: '국제업무지구', align: 'left'},
-{x: 700, y: 3700, stn: '송도달빛축제공원', align: 'left'}
-];
-var line2 = [
-{x: 700, y: 100, stn: '검단오류', align: 'left'},
-{x: 700, y: 200, stn: '왕길', align: 'left'},
-{x: 700, y: 300, stn: '검단사거리', align: 'left'},
-{x: 700, y: 400, stn: '마전', align: 'left'},
-{x: 700, y: 500, stn: '완정', align: 'left'},
-{x: 700, y: 600, stn: '독정', align: 'left'},
-{x: 700, y: 700, stn: '검암', align: 'left'},
-{x: 700, y: 800, stn: '검바위', align: 'left'},
-{x: 700, y: 900, stn: '아시아드경기장', align: 'left'},
-{x: 700, y: 1000, stn: '서구청', align: 'left'},
-{x: 700, y: 1100, stn: '가정', align: 'left'},
-{x: 700, y: 1200, stn: '가정중앙시장', align: 'left'},
-{x: 700, y: 1300, stn: '석남', align: 'left'},
-{x: 700, y: 1400, stn: '서부여성회관', align: 'left'},
-{x: 700, y: 1500, stn: '인천가좌', align: 'left'},
-{x: 700, y: 1600, stn: '가재울', align: 'left'},
-{x: 700, y: 1700, stn: '주안국가산단', align: 'left'},
-{x: 700, y: 1800, stn: '주안', align: 'left'},
-{x: 700, y: 1900, stn: '시민공원', align: 'left'},
-{x: 700, y: 2000, stn: '석바위시장', align: 'left'},
-
-{x: 400, y: 2100, stn: '인천시청', align: 'left'},
-
-{x: 100, y: 2200, stn: '석천사거리', align: 'right'},
-{x: 100, y: 2300, stn: '모래내시장', align: 'right'},
-{x: 100, y: 2400, stn: '만수', align: 'right'},
-{x: 100, y: 2500, stn: '남동구청', align: 'right'},
-{x: 100, y: 2600, stn: '인천대공원', align: 'right'},
-{x: 100, y: 2700, stn: '운연', align: 'right'}
-];
-
 var src = '<svg viewBox="0 0 800 3800">';
 src += '<polyline points="100,600 100,1950 150,2000 350,2000 400,2050 400,2150 450,2200 650,2200 700,2250 700,3700" fill="none" stroke="#759CCE" />';
 src += '<polyline points="700,100 700,2000 700,2050 650,2100 150,2100 100,2150 100,2700" fill="none" stroke="#F5A251" />';
 var i1, i2;
-line1.forEach((e, i) => {
+map_line1.forEach((e, i) => {
     if (e.stn == '인천시청') {
         i1 = i;
         return;
@@ -141,7 +76,7 @@ line1.forEach((e, i) => {
     if (train1[i].up) src += '<image xlink:href="images/up.png" x=' + (e.x + 20) + ' y="' + y + '" width="20px"/>';
     if (train1[i].dn) src += '<image xlink:href="images/dn.png" x=' + (e.x - 40) + ' y="' + y + '" width="20px"/>';
 });
-line2.forEach((e, i) => {
+map_line2.forEach((e, i) => {
     if (e.stn == '인천시청') {
         i2 = i;
         return;
