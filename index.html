@@ -1,109 +1,54 @@
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="user-scalable=no width=device-width" />
-<meta name="description" content="Subway Map" />
-<title>
-인천도시철도 전동열차 운행정보
-</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
-<link rel="stylesheet" type="text/css" href="./css/subway_map.css" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no width=device-width" />
+    <meta name="description" content="Subway Map" />
+    <title>
+        인천도시철도 전동열차 운행정보
+    </title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/subway_map.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
+
 <body>
-<div class=header>
-<a id="menu" onclick="openMenu();">
-<i class="material-icons">&#xE5D2;</i>
-</a>
-인천도시철도 전철 운행정보
-</div>
-<div class=drawer>
-<div class=drawer_inner>
-<a href='docs/'>사이트 정보</a>
-<a href='docs/api/'>API 레퍼런스</a>
-<a href='docs/terms/'>이용약관 및 정책</a>
-</div>
-</div>
-<div class=body>
-<div class=body_inner>
-<div class="subway_map" id="subway_map">
-<!-- Subway Map will be created via JS -->
-</div>
-</div>
-<hr width=98%>
-<div class=copyright>© 2023 Dark Tornado, All rights reserved.</div>
-</div>
-<script src='./js/map_info.js'></script>
-<script>
-var isOpened = false;
-function openMenu(){
-if(isOpened){
-document.querySelector('div.drawer').style.maxHeight = '0px';
-}
-else{
-document.querySelector('div.drawer').style.maxHeight = '100vw';
-}
-isOpened = !isOpened;
-}
-
-setInterval(updateInfo, 20 * 1000);
-updateInfo();
-
-async function updateInfo() {
-var line1 = await fetch('https://api.darktornado.net/subway/ictr/info?line=1&key=sample').then((res) => res.json());
-var line2 = await fetch('https://api.darktornado.net/subway/ictr/info?line=2&key=sample').then((res) => res.json());
-var src = await createMap(line1.data, line2.data);
-document.getElementById("subway_map").innerHTML = src + '</svg>';
-}
-
-function createMap(train1, train2) {
-var src = '<svg viewBox="0 0 800 3800">';
-src += '<polyline points="100,600 100,1950 150,2000 350,2000 400,2050 400,2150 450,2200 650,2200 700,2250 700,3700" fill="none" stroke="#759CCE" />';
-src += '<polyline points="700,100 700,2000 700,2050 650,2100 150,2100 100,2150 100,2700" fill="none" stroke="#F5A251" />';
-var i1, i2;
-map_line1.forEach((e, i) => {
-    if (e.stn == '인천시청') {
-        i1 = i;
-        return;
-    }
-    var x = e.x;
-    if (e.align == 'left') x -= 40;
-    else x += 40;
-    src += '<circle cx="'+e.x+'" cy="' + e.y + '" r="12" />';
-    src += '<text class='+e.align+' x='+x+' y=' + e.y + '>' + e.stn + '</text>';
-    var y = e.y - 20;
-    if (train1[i].up) src += '<image xlink:href="images/up.png" x=' + (e.x + 20) + ' y="' + y + '" width="20px"/>';
-    if (train1[i].dn) src += '<image xlink:href="images/dn.png" x=' + (e.x - 40) + ' y="' + y + '" width="20px"/>';
-});
-map_line2.forEach((e, i) => {
-    if (e.stn == '인천시청') {
-        i2 = i;
-        return;
-    }
-    var x = e.x;
-    if (e.align == 'left') x -= 40;
-    else x += 40;
-    src += '<circle cx="'+e.x+'" cy="' + e.y + '" r="12" />';
-    src += '<text class='+e.align+' x='+x+' y=' + e.y + '>' + e.stn + '</text>';
-    var y = e.y - 20;
-    if (train2[i].up) src += '<image xlink:href="images/up.png" x=' + (e.x + 20) + ' y="' + y + '" width="20px"/>';
-    if (train2[i].dn) src += '<image xlink:href="images/dn.png" x=' + (e.x - 40) + ' y="' + y + '" width="20px"/>';
-});
-var x = 400, y = 2100;
-src += '<circle cx="400" cy="' + y + '" r="12" />';
-src += '<text class=right x=430 y=' + (y + 50) + '>인천시청</text>';
-y -= 20;
-if (train1[i1].up) src += '<image xlink:href="images/up.png" x=' + (x + 20) + ' y="' + y + '" width="20px"/>';
-if (train1[i1].dn) src += '<image xlink:href="images/dn.png" x=' + (x - 40) + ' y="' + y + '" width="20px"/>';
-y += 20;
-x -= 20;
-if (train2[i2].up) src += '<image xlink:href="images/up_2.png" x=' + x + ' y="' + (y + 20) + '" width="40px"/>';
-if (train2[i2].dn) src += '<image xlink:href="images/dn_2.png" x=' + x + ' y="' + (y - 40) + '" width="40px"/>';
-
-return src;
-}
-
-</script>
+    <div class=header>
+        <a id="menu" onclick="openMenu();">
+            <i class="material-icons">&#xE5D2;</i>
+        </a>
+        인천도시철도 전철 운행정보
+    </div>
+    <div class=drawer>
+        <div class=drawer_inner>
+            <a href='docs/'>사이트 정보</a>
+            <a href='docs/api/'>API 레퍼런스</a>
+            <a href='docs/terms/'>이용약관 및 정책</a>
+        </div>
+    </div>
+    <div class=body>
+        <div class=body_inner>
+            <div class="subway_map" id="subway_map">
+                <!-- Subway Map will be created here via JS -->
+            </div>
+        </div>
+        <hr width=98%>
+        <div class=copyright>© 2023 Dark Tornado, All rights reserved.</div>
+    </div>
+    <script src='./js/map_info.js'></script>
+    <script src='./js/script.js'></script>
+    <script>
+        var isOpened = false;
+        function openMenu() {
+            if (isOpened) {
+                document.querySelector('div.drawer').style.maxHeight = '0px';
+            } else {
+                document.querySelector('div.drawer').style.maxHeight = '100vw';
+            }
+            isOpened = !isOpened;
+        }
+    </script>
 </body>
+
 </html>
