@@ -1,0 +1,23 @@
+polyline {
+    stroke-width: 12;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+circle {
+    fill: #FFFFFF;
+    stroke: #000000;
+    stroke-width: 2;
+}
+
+text {
+    font-size: 30px;
+}
+
+text.left {
+    text-anchor: end;
+}
+
+text.right {
+    text-anchor: start;
+}
