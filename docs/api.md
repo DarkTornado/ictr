@@ -11,8 +11,9 @@ nav_order: 2
 - key : 발급받은 API key
 - line : 노선 (1 또는 2)
 
-
-## /trains
+## GET /trains?key={API_KEY}&line={LINE}
 - 현재 운행중인 열차들의 열차번호와 위치를 불러와요
+- key : 발급받은 API key
+- line : 노선 (1 또는 2)
 
 ## /arrivals
