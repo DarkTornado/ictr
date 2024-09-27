@@ -7,7 +7,7 @@ async function updateInfo() {
     const url = 'https://api.darktornado.net/subway/ictr/info';
     const line1 = await fetch(url + '?line=1&key=sample').then((res) => res.json());
     const line2 = await fetch(url + '?line=2&key=sample').then((res) => res.json());
-    const src = await createMap(line1.data, line2.data);
+    const src = await createMap(line1, line2);
     document.getElementById("subway_map").innerHTML = src + '</svg>';
 }
 
